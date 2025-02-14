@@ -1,0 +1,41 @@
+@import 'normalize.css';
+@import 'bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+$scrollbar-bg: #f0f0f0;
+$scrollbar-thumb: #888;
+$scrollbar-thumb-hover: #555;
+
+// Áp dụng cho toàn bộ trang
+::-webkit-scrollbar {
+    width: 8px; // Độ rộng thanh cuộn
+    height: 8px; // Chiều cao thanh cuộn ngang
+}
+
+// Phần nền của thanh cuộn
+::-webkit-scrollbar-track {
+    background: $scrollbar-bg;
+    border-radius: 10px;
+}
+
+// Phần kéo (thumb)
+::-webkit-scrollbar-thumb {
+    background: $scrollbar-thumb;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+// Khi di chuột vào thanh cuộn
+::-webkit-scrollbar-thumb:hover {
+    background: $scrollbar-thumb-hover;
+}

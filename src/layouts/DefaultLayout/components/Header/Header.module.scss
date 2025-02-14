@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    height: 90px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    background: linear-gradient(285deg, #f92a28 27%, #da1752 100%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

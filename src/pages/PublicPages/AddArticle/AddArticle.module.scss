@@ -1,0 +1,21 @@
+.custom-css {
+    width: 700px;
+}
+
+.custom-select .ant-select-selector {
+    padding: 12px !important;
+}
+
+.submit {
+    border-radius: 0;
+    padding: 20px 40px;
+    background: #c00;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,46 @@
+.image {
+    width: 110px;
+    height: 66px;
+    object-fit: cover;
+}
+
+.title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+    max-height: calc(1.5em * 2);
+    text-decoration: none;
+    color: #212529;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    margin: 0;
+
+    &:hover {
+        color: #c00;
+    }
+}
+
+.img {
+    &:hover {
+        opacity: 0.8;
+        transition: all 0.4s;
+    }
+}
+
+.btn-more {
+    border-radius: 0;
+    padding: 20px 40px;
+    color: #c00;
+    font-size: 16px;
+    border-color: #c00;
+    width: 100%;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,57 @@
+.genre {
+    font-weight: 600;
+    color: rgb(204, 0, 0);
+    text-align: center;
+
+    &:hover {
+        transition: all 0.3s ease-in-out;
+        color: maroon;
+    }
+}
+
+.date {
+    color: rgb(52, 58, 64);
+    font-weight: 600;
+}
+
+.name {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000;
+}
+
+.sub-text {
+    color: rgb(128, 128, 128);
+    font-size: 20px;
+    font-weight: 500;
+}
+.text {
+    color: rgb(128, 128, 128);
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+    margin: 0;
+    color: #000;
+    text-align: justify;
+
+    &::first-letter {
+        font-size: 7em; /* Kích thước chữ lớn */
+        font-weight: bold; /* Chữ đậm */
+        color: #333; /* Màu chữ */
+        float: left; /* Đẩy sang trái */
+        margin-right: 10px; /* Khoảng cách với văn bản */
+        line-height: 1;
+    }
+}
+
+.author {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.straight-line {
+    margin: 30px 0;
+    max-height: 100%;
+    width: 1px;
+    background: linear-gradient(to right, #f0f0f0 0%, #f0f0f0 100%);
+}
