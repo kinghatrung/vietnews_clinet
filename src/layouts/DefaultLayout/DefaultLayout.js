@@ -16,7 +16,7 @@ function DefaultLayout({ children }) {
             <TopBar />
             <Header />
             <SubHeader />
-            <section>
+            <section className={cx('mb-4')}>
                 <div className={cx('content')}>{children}</div>
             </section>
             <Footer />

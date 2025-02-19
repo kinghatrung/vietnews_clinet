@@ -8,6 +8,7 @@ const cx = classNames.bind(styles);
 function Footer() {
     return (
         <footer className={cx('text-white py-4 mt-auto', 'footer')}>
+            <div></div>
             <div className={cx('container')}>
                 <div className={cx('row')}>
                     <div className={cx('col-md-4 mb-3 mb-md-0')}>
@@ -19,8 +20,8 @@ function Footer() {
                     </div>
                     <div className={cx('col-md-4 mb-3 mb-md-0')}>
                         <h3 className={cx('h5 mb-3')}>Liên hệ</h3>
-                        <p>Email: webmaster@vnexpress.net</p>
-                        <p>Điện thoại: 024 7300 8899 - máy lẻ 4500</p>
+                        <p>Email: webmaster@vietnews.net</p>
+                        <p>Điện thoại: 0933 222 8821 - máy lẻ 4500</p>
                     </div>
                     <div className={cx('col-md-4')}>
                         <h3 className={cx('h5 mb-3')}>Theo dõi</h3>

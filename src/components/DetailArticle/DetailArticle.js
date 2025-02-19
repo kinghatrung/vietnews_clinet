@@ -83,10 +83,10 @@ function DetailArticle() {
                         </Flex>
                         <Image width={'100%'} src={dataArticle.image} alt={dataArticle.name} />
                         <p className={cx('text', 'mt-4')}>{dataArticle.description}</p>
+                        {/* <Divider className={cx('my-3')} orientation="left" orientationMargin="0" /> */}
                         {/* <Flex >
                             <Avatar size={42} src={dataArticle.author?.avatar} />
                         </Flex> */}
-                        <Divider className={cx('my-3')} orientation="left" orientationMargin="0" />
                     </Flex>
                     <div className={cx('straight-line')}></div>
                     <div className={cx('col-4 mt-4')}>

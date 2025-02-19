@@ -8,8 +8,12 @@
     padding: 0;
 }
 
+html {
+}
+
 body {
     font-family: 'Montserrat', sans-serif !important;
+    scroll-behavior: smooth;
 }
 
 $scrollbar-bg: #f0f0f0;

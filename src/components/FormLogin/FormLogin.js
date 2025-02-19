@@ -28,8 +28,7 @@ function FormLogin({ handleTransfer }) {
             await loginUser(newUser, dispatch, navigate);
             message.success('Đăng nhập thành công!');
         } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Sai tài khoản hoặc mật khẩu!';
-            message.error(errorMessage);
+            message.error(error.response.data);
         }
     };
 
