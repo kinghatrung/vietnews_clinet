@@ -3,7 +3,19 @@ import classNames from 'classnames/bind';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useParams } from 'react-router-dom';
-import { Breadcrumb, Divider, Flex, Image, List, Button, Avatar, Empty, Pagination } from 'antd';
+import {
+    Breadcrumb,
+    Divider,
+    Flex,
+    Image,
+    List,
+    Button,
+    Avatar,
+    Empty,
+    Pagination,
+    Row,
+    Col,
+} from 'antd';
 import {
     HomeOutlined,
     CaretUpOutlined,
@@ -39,6 +51,7 @@ function Genre() {
             dispatch(startLoading());
             try {
                 const res = await axios.get(`http://localhost:8080/api/genre/${id}`);
+                setCurrentPage(1);
                 setGenre(res.data);
             } catch (error) {
                 console.error('There was an error fetching the genres!', error);
@@ -97,28 +110,30 @@ function Genre() {
                     />
                     <h1 className={cx('fw-semibold')}>{genre.name}</h1>
                     <Divider className={cx('my-3')} />
-                    <Flex style={{ marginBottom: '20px' }} justify="space-between">
-                        <div className={cx('col-9')}>
+                    <Row gutter={(16, 24)} style={{ marginBottom: '20px' }} justify="space-between">
+                        <Col lg={18} xs={24}>
                             {currentArticles?.map((article) => (
-                                <Flex key={article._id} className={cx('mb-4')} gap={'12px'}>
-                                    <Link
-                                        to={`/article_detail/${article._id}`}
-                                        style={{ width: '100%' }}
-                                    >
-                                        <Image
-                                            preview={false}
-                                            width={'500px'}
-                                            height={'300px'}
-                                            className={cx('img')}
-                                            src={article.image}
-                                        />
-                                    </Link>
-                                    <div>
-                                        <Flex justify={'space-between'}>
-                                            <p className={cx('writer')}>
+                                <Row gutter={(16, 16)} key={article._id} className={cx('mb-4')}>
+                                    <Col lg={12} md={24} xs={24}>
+                                        <Link
+                                            className={cx('img-link')}
+                                            to={`/article_detail/${article._id}`}
+                                        >
+                                            <Image
+                                                preview={false}
+                                                width={'100%'}
+                                                height={'300px'}
+                                                className={cx('img')}
+                                                src={article.image}
+                                            />
+                                        </Link>
+                                    </Col>
+                                    <Col lg={12} md={24} xs={24}>
+                                        <Flex className={cx('mb-2')} justify={'space-between'}>
+                                            <p className={cx('m-0', 'writer')}>
                                                 Bởi {article.author?.name}
                                             </p>
-                                            <p className={cx('fw-semibold', 'date')}>
+                                            <p className={cx('fw-semibold m-0', 'date')}>
                                                 {new Date(article.createdAt).toLocaleDateString(
                                                     'en-GB',
                                                 )}
@@ -131,15 +146,15 @@ function Genre() {
                                             <h3 className={cx('text-header')}>{article.name}</h3>
                                         </Link>
                                         <p className={cx('sub-text')}>{article.subDescription}</p>
-                                    </div>
-                                </Flex>
+                                    </Col>
+                                </Row>
                             ))}
                             {currentArticles?.length === 0 && (
                                 <Empty description={'Chưa có dữ liệu'} />
                             )}
-                        </div>
+                        </Col>
                         {userList?.filter((user) => user.articles.length > 0).length > 0 && (
-                            <div className={cx('col-2')}>
+                            <Col lg={6} xs={24}>
                                 <div className={cx('writer-box')}>
                                     <h3 className={cx('fw-semibold')}>Tác giả bạn có thể biết</h3>
                                     <List
@@ -180,9 +195,9 @@ function Genre() {
                                         </div>
                                     )}
                                 </div>
-                            </div>
+                            </Col>
                         )}
-                    </Flex>
+                    </Row>
                     {currentArticles?.length > 0 && (
                         <Pagination
                             className={cx('custom-pagination')}

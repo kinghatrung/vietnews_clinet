@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { Flex, Button, Modal, Dropdown, Space, Avatar, message } from 'antd';
+import { Flex, Button, Modal, Dropdown, Space, Avatar, message, Row, Col } from 'antd';
 import { DownOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 
 import styles from './TopBar.module.scss';

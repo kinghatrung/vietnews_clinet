@@ -1,3 +1,9 @@
+@media (max-width: 767px) {
+    .custom-btn {
+        margin-bottom: 10px;
+    }
+}
+
 .tabs {
     font-family: 'Montserrat', sans-serif !important;
 
@@ -30,6 +36,7 @@
     padding: 20px 40px;
     color: #c00;
     font-size: 16px;
+    width: 100%;
     background: linear-gradient(285deg, #f92a28 27%, #da1752 100%, #fff 100%) !important;
     font-weight: 500;
     transition: all 0.3s ease-in-out;

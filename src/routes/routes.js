@@ -1,7 +1,7 @@
 import config from '~/config';
 
 // Pages
-import DetailArticle from '~/components/DetailArticle';
+import DetailArticle from '~/pages/PublicPages/DetailArticle';
 // Public Page
 import Home from '~/pages/PublicPages/Home';
 import AddArticle from '~/pages/PublicPages/AddArticle';

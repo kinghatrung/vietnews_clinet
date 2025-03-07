@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import { Input, Select, Flex, Button, Form, message } from 'antd';
+import { Input, Select, Flex, Button, Form, message, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -76,11 +76,11 @@ function AddArticle() {
     };
 
     return (
-        <Flex justify="center" align="center" vertical className={cx('container mt-5 mb-4')}>
+        <Row justify="center" align="center" vertical className={cx('container mt-5 mb-4')}>
             {isLoading ? (
                 <Loading />
             ) : (
-                <div className={cx('w-50')}>
+                <Col lg={18} md={18} xs={24}>
                     <h2 className={cx('mb-3')}>Đăng bài báo</h2>
                     <Form layout="vertical">
                         <Form.Item
@@ -95,57 +95,63 @@ function AddArticle() {
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </Form.Item>
-                        <Flex gap={12}>
-                            <Form.Item
-                                className={cx('w-50')}
-                                label="Người viết"
-                                name="author"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Vui lòng nhập tên người viết!',
-                                    },
-                                ]}
-                            >
-                                <Select
-                                    mode="multiple"
-                                    style={{ width: '100%' }}
-                                    className={cx('custom-select')}
-                                    placeholder="Chọn người viết"
-                                    value={selectedAuthor}
-                                    onChange={setSelectedAuthor}
-                                    maxCount={1}
+                        <Row gutter={(0, { lg: 16, md: 16, xs: 0 })} justify={'space-between'}>
+                            <Col lg={12} md={12} xs={24}>
+                                <Form.Item
+                                    className={cx('')}
+                                    label="Người viết"
+                                    name="author"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Vui lòng nhập tên người viết!',
+                                        },
+                                    ]}
                                 >
-                                    <Select.Option key={user._id} value={user._id}>
-                                        {user.name}
-                                    </Select.Option>
-                                </Select>
-                            </Form.Item>
-                            <Form.Item
-                                className={cx('w-50')}
-                                label="Tên thể loại"
-                                name="genres"
-                                rules={[{ required: true, message: 'Vui lòng nhập tên thể loại!' }]}
-                            >
-                                <Select
-                                    mode="multiple"
-                                    style={{ width: '100%' }}
-                                    placeholder="Chọn thể loại"
-                                    value={selectedGenres}
-                                    onChange={setSelectedGenres}
-                                >
-                                    {dataGenres.map((genre) => (
-                                        <Select.Option
-                                            style={{ padding: '10px' }}
-                                            key={genre._id}
-                                            value={genre._id}
-                                        >
-                                            {genre.name}
+                                    <Select
+                                        mode="multiple"
+                                        style={{ width: '100%' }}
+                                        className={cx('custom-select')}
+                                        placeholder="Chọn người viết"
+                                        value={selectedAuthor}
+                                        onChange={setSelectedAuthor}
+                                        maxCount={1}
+                                    >
+                                        <Select.Option key={user._id} value={user._id}>
+                                            {user.name}
                                         </Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Flex>
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                            <Col lg={12} md={12} xs={24}>
+                                <Form.Item
+                                    className={cx('')}
+                                    label="Tên thể loại"
+                                    name="genres"
+                                    rules={[
+                                        { required: true, message: 'Vui lòng nhập tên thể loại!' },
+                                    ]}
+                                >
+                                    <Select
+                                        mode="multiple"
+                                        style={{ width: '100%' }}
+                                        placeholder="Chọn thể loại"
+                                        value={selectedGenres}
+                                        onChange={setSelectedGenres}
+                                    >
+                                        {dataGenres.map((genre) => (
+                                            <Select.Option
+                                                style={{ padding: '10px' }}
+                                                key={genre._id}
+                                                value={genre._id}
+                                            >
+                                                {genre.name}
+                                            </Select.Option>
+                                        ))}
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                        </Row>
                         <Form.Item
                             label="Tên tiêu đề phụ"
                             name="subDescription"
@@ -196,9 +202,9 @@ function AddArticle() {
                             Đăng bài
                         </Button>
                     </Form>
-                </div>
+                </Col>
             )}
-        </Flex>
+        </Row>
     );
 }
 

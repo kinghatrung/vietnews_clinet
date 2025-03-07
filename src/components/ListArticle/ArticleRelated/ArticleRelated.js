@@ -25,36 +25,34 @@ function ArticleRelated({ _id, id }) {
     }, []);
 
     return (
-        <div className={cx('d-flex gap-2 justify-content-center align-items-start')}>
-            <Flex vertical>
-                {genre.articles
-                    ?.filter((article) => article._id !== id)
-                    .slice(0, 6)
-                    .map((article) => (
-                        <Flex gap={12} className={cx('mb-3')} key={article._id}>
-                            <Link to={`/article_detail/${article._id}`}>
-                                <Image
-                                    preview={false}
-                                    style={{ width: '160px', height: '86px', objectFit: 'cover' }}
-                                    src={article.image}
-                                    className={cx('img')}
-                                />
-                            </Link>
-                            <Link to={`/article_detail/${article._id}`} className={cx('title')}>
-                                {article.name}
-                            </Link>
-                        </Flex>
-                    ))}
-                {genre.articles?.filter((article) => article._id !== id).length > 0 && (
-                    <Link to={`/genre/${_id}`}>
-                        <Button className={cx('btn-more')}>Xem thêm</Button>
-                    </Link>
-                )}
-                {genre.articles?.filter((article) => article._id !== id).length === 0 && (
-                    <Empty description="Không có bài viết liên quan" />
-                )}
-            </Flex>
-        </div>
+        <Flex vertical>
+            {genre.articles
+                ?.filter((article) => article._id !== id)
+                .slice(0, 5)
+                .map((article) => (
+                    <Flex gap={12} className={cx('mb-3')} key={article._id}>
+                        <Link to={`/article_detail/${article._id}`}>
+                            <Image
+                                preview={false}
+                                style={{ width: '160px', height: '86px', objectFit: 'cover' }}
+                                src={article.image}
+                                className={cx('img')}
+                            />
+                        </Link>
+                        <Link to={`/article_detail/${article._id}`} className={cx('title')}>
+                            {article.name}
+                        </Link>
+                    </Flex>
+                ))}
+            {genre.articles?.filter((article) => article._id !== id).length > 0 && (
+                <Link to={`/genre/${_id}`}>
+                    <Button className={cx('btn-more')}>Xem thêm</Button>
+                </Link>
+            )}
+            {genre.articles?.filter((article) => article._id !== id).length === 0 && (
+                <Empty description="Không có bài viết liên quan" />
+            )}
+        </Flex>
     );
 }
 

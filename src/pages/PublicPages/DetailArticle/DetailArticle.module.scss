@@ -35,11 +35,11 @@
     text-align: justify;
 
     &::first-letter {
-        font-size: 7em; /* Kích thước chữ lớn */
-        font-weight: bold; /* Chữ đậm */
-        color: #333; /* Màu chữ */
-        float: left; /* Đẩy sang trái */
-        margin-right: 10px; /* Khoảng cách với văn bản */
+        font-size: 7em;
+        font-weight: bold;
+        color: #333;
+        float: left;
+        margin-right: 10px;
         line-height: 1;
     }
 }
@@ -49,9 +49,17 @@
     font-weight: 700;
 }
 
-.straight-line {
-    margin: 30px 0;
-    max-height: 100%;
-    width: 1px;
-    background: linear-gradient(to right, #f0f0f0 0%, #f0f0f0 100%);
+.btn-back {
+    border-radius: 0;
+    padding: 20px 40px;
+    color: #c00;
+    font-size: 16px;
+    border-color: #c00;
+    width: 100%;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }

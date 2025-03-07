@@ -8,14 +8,27 @@
     justify-content: center;
     background: #f8f9fa;
     border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     box-shadow: 0 2px 3px rgba(100, 100, 100, 0.1);
     z-index: 1000;
     padding: 10px 20px;
 }
 
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .list {
     list-style: none;
     display: inline-flex;
+    align-items: center;
     gap: 15px;
     padding: 0;
     margin: 0;
@@ -32,4 +45,8 @@
         transition: all 0.4s;
         color: rgb(204, 0, 0);
     }
+}
+
+.active {
+    color: rgb(204, 0, 0);
 }

@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
 import { Flex } from 'antd';
 
 import styles from './ListArticle.module.scss';

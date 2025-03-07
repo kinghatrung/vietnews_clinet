@@ -1,3 +1,9 @@
+@media (max-width: 767px) {
+    .img-link {
+        min-width: 100%;
+    }
+}
+
 .bread {
     margin: 20px 0;
     padding: 15px;
@@ -47,7 +53,10 @@
     }
 }
 
-//
+.img-link {
+    min-width: 500px;
+}
+
 .author-container {
     background: white;
     padding: 20px;

@@ -16,6 +16,8 @@ import {
     Form,
     Input,
     Space,
+    Row,
+    Col,
 } from 'antd';
 import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons';
 
@@ -46,7 +48,6 @@ function Profile() {
     const dispatch = useDispatch();
     const isLoading = useSelector((state) => state.loading.isLoading);
     const user = useSelector((state) => state.auth.login?.currentUser);
-    console.log(user);
 
     const articlesPerPage = 12;
     const indexOfLastArticle = currentPage * articlesPerPage;
@@ -109,15 +110,20 @@ function Profile() {
             children: isLoading ? (
                 <Loading />
             ) : currentArticles.length > 0 ? (
-                <Flex className={cx('my-2')} wrap gap={'20px'}>
+                <Row
+                    wrap
+                    gutter={[16, { xs: 24, md: 24, lg: 32 }]}
+                    justify={'center'}
+                    className={cx('my-2')}
+                >
                     {currentArticles.map((article) => (
-                        <div style={{ width: '19rem' }} key={article._id}>
+                        <Col xs={24} md={12} lg={6} style={{ width: '19rem' }} key={article._id}>
                             <Link to={`/article_detail/${article._id}`}>
                                 <Image
                                     className={cx('img')}
                                     preview={false}
                                     width={'100%'}
-                                    style={{ height: '182px', objectFit: 'cover' }}
+                                    style={{ height: '200px', objectFit: 'cover' }}
                                     src={article.image}
                                 />
                             </Link>
@@ -133,9 +139,9 @@ function Profile() {
                             >
                                 <h3 className={cx('name-article')}>{article.name}</h3>
                             </Link>
-                        </div>
+                        </Col>
                     ))}
-                </Flex>
+                </Row>
             ) : (
                 <Empty description="Chưa có bài báo nào" />
             ),
@@ -144,35 +150,57 @@ function Profile() {
 
     return (
         <div className={cx('container mt-4')}>
-            <Flex gap={28} className={cx('mb-3')}>
-                <Avatar src={user?.avatar} size={220} />
-                <Flex vertical gap={12}>
-                    <Flex align="center">
+            <Row
+                gutter={({ lg: 16, md: 16, sm: 0, xs: 0 }, { lg: 42, md: 42, sm: 0, xs: 0 })}
+                justify={{ xs: 'center', sm: 'center', md: 'start' }}
+                className={cx('mb-3')}
+            >
+                <Col>
+                    <Avatar
+                        src={user?.avatar}
+                        size={{
+                            xs: 210,
+                            sm: 220,
+                            md: 230,
+                            lg: 240,
+                            xl: 240,
+                            xxl: 240,
+                        }}
+                    />
+                </Col>
+                <Col>
+                    <Flex className={cx('mb-2')} align="center">
                         <p className={cx('name')}>{user?.name}</p>
                         <Divider type="vertical" />
                         <p className={cx('nickname')}>{user?.nickname}</p>
                     </Flex>
-                    <Flex gap={16}>
-                        <Button
-                            onClick={() => setOpenModal(!openModal)}
-                            color="danger"
-                            className={cx('custom-btn')}
-                            variant="solid"
-                        >
-                            Sửa hồ sơ
-                        </Button>
+                    <Row gap={8} gutter={(16, 16)} className={cx('mb-2')}>
+                        <Col lg={12} sm={12} xs={24}>
+                            <Button
+                                onClick={() => setOpenModal(!openModal)}
+                                color="danger"
+                                className={cx('custom-btn')}
+                                variant="solid"
+                            >
+                                Sửa hồ sơ
+                            </Button>
+                        </Col>
+
+                        <Col lg={12} sm={12} xs={24}>
+                            <Link style={{ textDecoration: 'none' }} to={config.routes.add_article}>
+                                <Button variant="solid" color="danger" className={cx('custom-btn')}>
+                                    Thêm bài báo
+                                </Button>
+                            </Link>
+                        </Col>
+
                         <Drawer
                             title="Sửa hồ sơ"
                             onClose={() => setOpenModal(!openModal)}
                             open={openModal}
                             extra={
                                 <Space>
-                                    <Button
-                                        type="primary"
-                                        // onClick={() => handleUpdateUser(selectedUserId)}
-                                    >
-                                        OK
-                                    </Button>
+                                    <Button type="primary">OK</Button>
                                 </Space>
                             }
                         >
@@ -274,17 +302,12 @@ function Profile() {
                                 </Form.Item>
                             </Form>
                         </Drawer>
-                        <Link style={{ textDecoration: 'none' }} to={config.routes.add_article}>
-                            <Button variant="solid" color="danger" className={cx('custom-btn')}>
-                                Thêm bài báo
-                            </Button>
-                        </Link>
-                    </Flex>
-                    <p className={cx('address', 'm-0')}>Địa chỉ: {user?.address}</p>
+                    </Row>
+                    <p className={cx('address', 'mb-2')}>Địa chỉ: {user?.address}</p>
                     <p className={cx('articles')}>Số bài báo đã đăng: {user?.articles.length}</p>
-                    <p className={cx('bio')}>"{user?.bio ? user?.bio : 'Chưa có tiểu sử'}"</p>
-                </Flex>
-            </Flex>
+                    <p className={cx('bio')}>{user?.bio ? user?.bio : "'Chưa có tiểu sử'"}</p>
+                </Col>
+            </Row>
             <Tabs className={cx('tabs')} defaultActiveKey="1" items={items} />
             {currentArticles?.length > 0 && (
                 <Pagination

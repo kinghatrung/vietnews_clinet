@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import { Flex, Divider, Button, Skeleton } from 'antd';
+import { Divider, Button, Col, Row } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Home.module.scss';
@@ -64,16 +64,20 @@ function Home() {
                             genre.articles.length > 0 && (
                                 <div key={genre._id} className={cx('container mt-4')}>
                                     <h2 className={cx('name')}>{genre.name}</h2>
-                                    <Divider
-                                        className={cx('my-3')}
-                                        orientation="left"
-                                        orientationMargin="0"
-                                    />
-                                    <Flex justify="space-around" wrap gap={'20px'}>
+                                    <Divider className={cx('my-3')} />
+
+                                    <Row
+                                        wrap
+                                        gutter={[16, { xs: 24, md: 24, lg: 32 }]}
+                                        justify={'center'}
+                                    >
                                         {genre.articles.slice(0, 8).map((article) => (
-                                            <Article key={article._id} {...article} />
+                                            <Col xs={24} md={12} lg={6} key={article._id}>
+                                                <Article {...article} />
+                                            </Col>
                                         ))}
-                                    </Flex>
+                                    </Row>
+
                                     {genre.articles.length >= 8 && (
                                         <NavLink className={cx('link')} to={`/genre/${genre._id}`}>
                                             <Button

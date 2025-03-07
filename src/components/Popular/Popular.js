@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import { Carousel, Flex, Image } from 'antd';
+import { Carousel, Flex, Image, Row, Col } from 'antd';
 
 import styles from './Popular.module.scss';
 
@@ -16,8 +16,8 @@ function Popular({ articles, dataGenres }) {
     };
 
     return (
-        <Flex className={cx('container mt-4', 'box')}>
-            <div className={cx('col-9')}>
+        <Row justify={'center'} className={cx('container mt-4', 'box')}>
+            <Col xs={24} md={24} lg={16}>
                 <Carousel dots={false} autoplay autoplaySpeed={2800} draggable>
                     {articles.slice(0, 3).map((article) => (
                         <div key={article._id} className={cx('carousel-item')}>
@@ -61,8 +61,8 @@ function Popular({ articles, dataGenres }) {
                         </div>
                     ))}
                 </Carousel>
-            </div>
-            <div className={cx('col-3')}>
+            </Col>
+            <Col xs={24} md={24} lg={8}>
                 {getRandomGenres(dataGenres, 2).map((genre) =>
                     genre.articles.slice(0, 1).map((article) => (
                         <div key={article._id} className={cx('article')}>
@@ -103,8 +103,8 @@ function Popular({ articles, dataGenres }) {
                         </div>
                     )),
                 )}
-            </div>
-        </Flex>
+            </Col>
+        </Row>
     );
 }
 

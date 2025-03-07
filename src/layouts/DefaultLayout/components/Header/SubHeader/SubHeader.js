@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import { Row, Col } from 'antd';
 
 import styles from './SubHeader.module.scss';
 import { startLoading, stopLoading } from '~/redux/loadingSlice';
@@ -30,20 +31,21 @@ function SubHeader() {
     }, []);
 
     return (
-        <nav className={cx('subnav')}>
-            <ul className={cx('list')}>
-                {genres.map((genre) => (
-                    <li key={genre._id} className={cx('item-link')}>
+        <Row className={cx('subnav')}>
+            <div className={cx('scroll-container')}>
+                <ul className={cx('list')}>
+                    {genres.map((genre) => (
                         <NavLink
+                            key={genre._id}
                             to={`/genre/${genre._id}`}
                             className={({ isActive }) => cx('link', { active: isActive })}
                         >
-                            {genre.name}
+                            <li className={cx('item-link')}>{genre.name}</li>
                         </NavLink>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+                    ))}
+                </ul>
+            </div>
+        </Row>
     );
 }
 

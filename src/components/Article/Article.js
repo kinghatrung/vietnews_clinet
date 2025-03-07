@@ -8,13 +8,13 @@ const cx = classNames.bind(styles);
 
 function Article({ _id, image, name, createdAt, author }) {
     return (
-        <div style={{ width: '19rem' }}>
+        <div style={{ Width: '19rem' }}>
             <Link to={`/article_detail/${_id}`}>
                 <Image
                     preview={false}
                     src={image}
                     width={'100%'}
-                    style={{ height: '182px', objectFit: 'cover' }}
+                    style={{ height: '182px', minHeight: '200px', objectFit: 'cover' }}
                     className={cx('img')}
                 />
             </Link>
